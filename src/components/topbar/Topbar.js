@@ -7,6 +7,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 
 function Topbar() {
   return (
+    <>
     <div className='topbarContainer'>
         <div className="topbarLeft">
             <span className='logo'>Social Geek</span>
@@ -39,6 +40,7 @@ function Topbar() {
             <img src="/assets/person/1.jpeg" alt="" className="topbarImg" />
         </div>
     </div>
+    </>
   )
 }
 
