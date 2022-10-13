@@ -48,6 +48,10 @@ function Sidebar() {
                 <span className='sidebarListItemText'>Jobs</span>
               </li>
               <li className="sidebarListItem">
+                <WorkIcon className='sidebarIcon'/>
+                <span className='sidebarListItemText'>Maratial Status</span>
+              </li>
+              <li className="sidebarListItem">
                 <EventIcon className='sidebarIcon'/>
                 <span className='sidebarListItemText'>Events</span>
               </li>
