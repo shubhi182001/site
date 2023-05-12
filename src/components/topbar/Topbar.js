@@ -10,7 +10,7 @@ function Topbar() {
     <>
     <div className='topbarContainer'>
         <div className="topbarLeft">
-            <span className='logo'>Social Geek</span>
+            <span className='logo'>CircleUp</span>
         </div>
         <div className="topbarCenter">
             <div className="searchbar">
