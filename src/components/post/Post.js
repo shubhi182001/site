@@ -4,6 +4,7 @@ import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import {Users} from "../../dummyData"
 
 function Post({post}) {
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;  
     const [like, setLike] = useState(post.like);
     const [isLiked, setIsLiked] = useState(false)
     const likeCount = () => {
@@ -15,7 +16,7 @@ function Post({post}) {
     <div className="postWrapper">
         <div className="postTop">
             <div className="postTopLeft">
-                <img src="/assets/person/1.jpeg" alt="" className="postProfileImg" />
+                <img src={Users.filter((u) => u.id === post.userId)[0].profilePicture} alt="" className="postProfileImg" />
                 <span className="postUsername">{Users.filter((u) => u.id === post.userId)[0].username}</span>
                 <span className='postDate'>{post.date}</span>
             </div>
@@ -28,12 +29,12 @@ function Post({post}) {
             <span className="postText">{post.desc}</span>
             :null
         }
-            <img src={post.photo} alt="" className="postImg" />
+            <img src={PF+post.photo} alt="" className="postImg" />
         </div>
         <div className="postBottom">
             <div className="postBottomLeft">
-                {/* <img src="assets/like.png" alt="" className="likeIcon" onClick={likeCount} /> */}
-                <img src="assets/heart.png" alt="" className="likeIcon" onClick={likeCount} />
+                <img src={`${PF}like.png`} alt="" className="likeIcon" onClick={likeCount} />
+                <img src={`${PF}heart.png`} alt="" className="likeIcon" onClick={likeCount} />
                 <span className="likeCounter"> {like} people loved it</span>
             </div>
             <div className="postBottomRight">

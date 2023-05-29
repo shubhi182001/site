@@ -53,4 +53,6 @@
     margin: 0;
     list-style: none;
   }
-  
+  .closeHeading{
+    margin-bottom: 6%;
+  }
