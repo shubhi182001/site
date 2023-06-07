@@ -15,17 +15,13 @@ export default function Rightbar({user}) {
   const[followed , setFollowed] = useState();
 
   useEffect(() => {
-    console.log("current", currUser)
-    console.log(user?._id)
     setFollowed(currUser.following.includes(user?._id))
   }, [user, currUser]) 
 
   useEffect(() => {
     const getFriends = async() => {
-      console.log("getting friends")
       try{
         const friendList = await axios.get("/users/friends/" + user._id);
-        console.log(friendList);
         setFriends(friendList.data)
       }catch(e){
         console.log(e);
@@ -103,7 +99,6 @@ export default function Rightbar({user}) {
             friends ?
             friends.map(friend => (
               <Link key={friend._id} to={"/profile/" + friend.username} style={{textDecoration:"none"}}>
-                {console.log(friends)}
                 <div className="rightbarFollowing">
                   <img
                     src={friend.profilePicture ? PF + friend.profilePicture : PF + "person/1.jpeg"}
