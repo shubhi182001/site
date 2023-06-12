@@ -11,6 +11,8 @@ function Feed({username}) {
   const[posts, setPosts] = useState([]);
   const {user} = useContext(AuthContext);
   
+  const [refresh , setRefresh ] =useState(false);
+
   useEffect(() => {
     const fetch = async() => {
       const res = username ?  await axios.get("/posts/profile/" + username) : await axios.get(`posts/timeline/${user._id}`)
@@ -19,13 +21,13 @@ function Feed({username}) {
       }));
     }
     fetch();
-  },[username, user._id])
+  },[username, user._id, refresh])
   return (
     <div className='feed'>
       <div className="feedWrapper">
         { (!username ||  username === user.username) && <Share/>}
         {posts.map(p => 
-        (<Post key={p._id} post={p}/>)
+        (<Post key={p._id} post={p} refresh = {refresh}  setRefresh = {setRefresh} />)
         )}
       </div>
     </div>
