@@ -5,13 +5,11 @@ import axios from "axios";
 
 export default function Register() {
 
-  const url = process.env.HOSTED_URL
   const username = useRef();
   const email = useRef();
   const password = useRef();
   const passwordAgain = useRef();
   const navigate = useNavigate();
-
 
   const handleClick =async (e) => {
     e.preventDefault();
@@ -24,7 +22,7 @@ export default function Register() {
         password: password.current.value
       }
       try{
-        await axios.post(`${url}auth/register`, user)
+        await axios.post("/auth/register", user)
         navigate("/login");
       }catch(e){
         console.log(e);

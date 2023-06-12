@@ -8,7 +8,6 @@ import { AuthContext } from '../../context/AuthContext'
 import axios from "axios"
 import {io} from "socket.io-client"
 
-const url = process.env.HOSTED_URL
 const socket= io("http://localhost:8000");
 
 const Messenger = () => {
@@ -47,20 +46,20 @@ const Messenger = () => {
     useEffect(() => {
         const getConv = async() => {
             try{
-                const res = await axios.get(`${url}conversations/` + user._id)
+                const res = await axios.get("/conversations/" + user._id)
                 setConversations(res.data);
             }catch(e){
                 console.log(e);
             }
         }
         getConv();
-    },[user, url])
+    },[user])
  
 useEffect(() => {
 
     const getMessages = async() => {
         try{
-            const res = await axios.get(`${url}messages/` + currentChat?._id)
+            const res = await axios.get("/messages/" + currentChat?._id)
             setMessages(res.data);
             
         }catch(e){
@@ -88,7 +87,7 @@ const handleSubmit = async(e) => {
     })
 
     try{
-        const res = await axios.post(`${url}messages`, message);
+        const res = await axios.post("/messages", message);
         setMessages([...messages, res.data]);
         setNewMessage("");
     }catch(e){
