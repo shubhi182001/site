@@ -7,13 +7,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
+
 export default function Profile() {
+  const url = process.env.HOSTED_URL
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
   const username = useParams().username;
   const[user, setUser] = useState({})
   useEffect(() => {
     const fetchUser = async() => {
-      const res = await axios.get(`/users?username=${username}`)
+      const res = await axios.get(`${url}users?username=${username}`)
       setUser(res.data);
     };
     fetchUser();
